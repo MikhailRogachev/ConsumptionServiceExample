@@ -14,7 +14,7 @@ namespace ConsumptionService.Automapper
         {
             CreateMap<ConsumptionCostModel, ResponseDto>()
                 .ForMember(d => d.TariffName, s => s.MapFrom(r => r.Name))
-                .ForMember(d => d.AnualCost, s => s.MapFrom(r => r.AnualCost));                
+                .ForMember(d => d.AnnualCost, s => s.MapFrom(r => r.AnualCost));                
         }
     }
 }

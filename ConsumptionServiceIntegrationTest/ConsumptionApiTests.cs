@@ -38,10 +38,10 @@ namespace ConsumptionServiceIntegrationTest
                 var expectedAmount = item.Value;
                 var realAmount = dto.FirstOrDefault(p => p.TariffName == item.Key);
 
-                realAmount?.AnualCost.Should().Be(expectedAmount);
+                realAmount?.AnnualCost.Should().Be(expectedAmount);
             }
 
-            dto.First().AnualCost.Should().BeLessThan(dto.Last().AnualCost);
+            dto.First().AnnualCost.Should().BeLessThan(dto.Last().AnnualCost);
         }
 
         public static TheoryData<decimal, Dictionary<string, decimal>> GetConsumptions()

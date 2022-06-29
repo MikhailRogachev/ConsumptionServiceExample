@@ -13,6 +13,6 @@
         /// <summary>
         /// Get; set; The annual cost.
         /// </summary>
-        public decimal AnualCost { get; set; }
+        public decimal AnnualCost { get; set; }
     }
 }

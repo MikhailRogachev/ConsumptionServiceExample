@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "1dda06cc-98b0-4d6c-a6ee-02a848220a6e",
+		"name": "ConsumptionServiceTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1379020"
+	},
+	"item": [
+		{
+			"name": "Get Annual Cost for the consumption 3500",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var json_data = pm.response.json();\r",
+							"var productA = 'basic electricity tariff';\r",
+							"var productB = 'Packaged tariff';\r",
+							"var expected_cost_A = 830;\r",
+							"var expected_cost_B = 800;\r",
+							"\r",
+							"pm.test('Status code is 200', () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test('The Length of the response is 2', () =>\r",
+							"{\r",
+							"    pm.expect(json_data.length).be.equal(2);\r",
+							"});\r",
+							"\r",
+							"pm.test('Array of Properties: tariffName, annualCost', () => {\r",
+							"    for (var i in json_data){\r",
+							"        pm.expect(json_data[i]).to.be.an('object').that.include.keys(['tariffName', 'annualCost']);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test('The annual cost for product A is ' + expected_cost_A, () => {\r",
+							"    var result = json_data.find(obj =>{\r",
+							"        return obj.tariffName == productA;\r",
+							"    });\r",
+							"    pm.expect(result.annualCost).be.equal(expected_cost_A);   \r",
+							"});\r",
+							"\r",
+							"pm.test('The annual cost for product B is ' + expected_cost_B, () => {\r",
+							"    var result = json_data.find(obj =>{\r",
+							"        return obj.tariffName == productB;\r",
+							"    });\r",
+							"    pm.expect(result.annualCost).be.equal(expected_cost_B);   \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5018/Consumption/3500",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5018",
+					"path": [
+						"Consumption",
+						"3500"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Annual Cost for the consumption 4500",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var json_data = pm.response.json();\r",
+							"var productA = 'basic electricity tariff';\r",
+							"var productB = 'Packaged tariff';\r",
+							"var expected_cost_A = 1050;\r",
+							"var expected_cost_B = 950;\r",
+							"\r",
+							"pm.test('Status code is 200', () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test('The Length of the response is 2', () =>\r",
+							"{\r",
+							"    pm.expect(json_data.length).be.equal(2);\r",
+							"});\r",
+							"\r",
+							"pm.test('Array of Properties: tariffName, annualCost', () => {\r",
+							"    for (var i in json_data){\r",
+							"        pm.expect(json_data[i]).to.be.an('object').that.include.keys(['tariffName', 'annualCost']);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test('The annual cost for product A is ' + expected_cost_A, () => {\r",
+							"    var result = json_data.find(obj =>{\r",
+							"        return obj.tariffName == productA;\r",
+							"    });\r",
+							"    pm.expect(result.annualCost).be.equal(expected_cost_A);   \r",
+							"});\r",
+							"\r",
+							"pm.test('The annual cost for product B is ' + expected_cost_B, () => {\r",
+							"    var result = json_data.find(obj =>{\r",
+							"        return obj.tariffName == productB;\r",
+							"    });\r",
+							"    pm.expect(result.annualCost).be.equal(expected_cost_B);   \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5018/Consumption/4500",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5018",
+					"path": [
+						"Consumption",
+						"4500"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Annual Cost for the consumption 6000",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var json_data = pm.response.json();\r",
+							"var productA = 'basic electricity tariff';\r",
+							"var productB = 'Packaged tariff';\r",
+							"var expected_cost_A = 1380;\r",
+							"var expected_cost_B = 1400;\r",
+							"\r",
+							"pm.test('Status code is 200', () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test('The Length of the response is 2', () =>\r",
+							"{\r",
+							"    pm.expect(json_data.length).be.equal(2);\r",
+							"});\r",
+							"\r",
+							"pm.test('Array of Properties: tariffName, annualCost', () => {\r",
+							"    for (var i in json_data){\r",
+							"        pm.expect(json_data[i]).to.be.an('object').that.include.keys(['tariffName', 'annualCost']);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test('The annual cost for product A is ' + expected_cost_A, () => {\r",
+							"    var result = json_data.find(obj =>{\r",
+							"        return obj.tariffName == productA;\r",
+							"    });\r",
+							"    pm.expect(result.annualCost).be.equal(expected_cost_A);   \r",
+							"});\r",
+							"\r",
+							"pm.test('The annual cost for product B is ' + expected_cost_B, () => {\r",
+							"    var result = json_data.find(obj =>{\r",
+							"        return obj.tariffName == productB;\r",
+							"    });\r",
+							"    pm.expect(result.annualCost).be.equal(expected_cost_B);   \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5018/Consumption/6000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5018",
+					"path": [
+						"Consumption",
+						"6000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Annual Cost with invalid input - text",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 404', () => {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5018/Consumption/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5018",
+					"path": [
+						"Consumption",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Annual Cost with invalid input - negative consumption",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 400', () => {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5018/Consumption/-5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5018",
+					"path": [
+						"Consumption",
+						"-5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
