@@ -39,7 +39,7 @@ namespace ConsumptionService.Controllers
         /// 400 - Invalid input value, the error message returned.
         /// </returns>
         [HttpGet("{consumption:decimal}")]
-        public IActionResult GetAnnualCost(decimal consumption)
+        public async Task<IActionResult> GetAnnualCost(decimal consumption)
         {
             _logger.LogTrace("Get Annual Cost for the consumption {value} kWh/year", consumption);
 
@@ -52,7 +52,7 @@ namespace ConsumptionService.Controllers
                 return BadRequest(errormessage);
             }
 
-            var result = _service.GetAnnualConsumption(consumption);
+            var result = await _service.GetAnnualConsumptionAsync(consumption);
 
             if (!result.IsAny())
             {

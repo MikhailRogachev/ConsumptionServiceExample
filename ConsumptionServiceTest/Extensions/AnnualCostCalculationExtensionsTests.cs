@@ -18,10 +18,10 @@ namespace ConsumptionServiceTest.Extensions
         [InlineData(3500, 800)]
         [InlineData(4500, 950)]
         [InlineData(6000, 1400)]
-        public void AnnualCostForProductB_Result(decimal value, decimal expected)
+        public async Task AnnualCostForProductB_Result(decimal value, decimal expected)
         {
             // arrange
-            var productB = DataHelper.GetProduct<ProductB>();
+            var productB = await DataHelper.GetProduct<ProductB>();
 
             productB.Should().NotBeNull();
 
@@ -42,10 +42,10 @@ namespace ConsumptionServiceTest.Extensions
         [InlineData(3500, 830)]
         [InlineData(4500, 1050)]
         [InlineData(6000, 1380)]
-        public void AnnualCostForProductA_Result(decimal value, decimal expected)
+        public async Task AnnualCostForProductA_Result(decimal value, decimal expected)
         {
             // arrange
-            var productA = DataHelper.GetProduct<ProductA>();
+            var productA = await DataHelper.GetProduct<ProductA>();
 
             productA.Should().NotBeNull();
 

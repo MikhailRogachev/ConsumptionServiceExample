@@ -14,6 +14,6 @@ namespace ConsumptionService.Repository
         /// <returns>
         /// The <see cref="IEnumerable{Product}">Products Collection</see>.
         /// </returns>
-        IEnumerable<Product> GetProducts();
+        Task<IEnumerable<Product>> GetProductsAsync();
     }
 }

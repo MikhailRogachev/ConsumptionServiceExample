@@ -31,9 +31,9 @@ namespace ConsumptionService.Services
         /// The <see cref="IEnumerable{ConsumptionCostModel}">result</see> 
         /// of the annual cost calculation.
         /// </returns>
-        public IEnumerable<ConsumptionCostModel> GetAnnualConsumption(decimal consumptionValue)
+        public async Task<IEnumerable<ConsumptionCostModel>> GetAnnualConsumptionAsync(decimal consumptionValue)
         {
-            var products = GetProductData();
+            var products = await GetProductDataAsync();
 
             if(!products.IsAny())
             {
@@ -44,9 +44,9 @@ namespace ConsumptionService.Services
             return Calculate(products, consumptionValue);
         }
 
-        private IEnumerable<Product> GetProductData()
+        private async Task<IEnumerable<Product>> GetProductDataAsync()
         {
-            return _productRepository.GetProducts();
+            return await _productRepository.GetProductsAsync();
         }
 
         private IEnumerable<ConsumptionCostModel> Calculate(IEnumerable<Product> products, decimal value)

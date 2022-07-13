@@ -17,6 +17,6 @@ namespace ConsumptionService.Services
         /// The <see cref="IEnumerable{ConsumptionCostModel}">result</see> 
         /// of the annual cost calculation.
         /// </returns>
-        IEnumerable<ConsumptionCostModel> GetAnnualConsumption(decimal consumptionValue);
+        Task<IEnumerable<ConsumptionCostModel>> GetAnnualConsumptionAsync(decimal consumptionValue);
     }
 }
