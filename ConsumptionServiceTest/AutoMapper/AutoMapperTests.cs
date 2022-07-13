@@ -41,7 +41,7 @@ namespace ConsumptionServiceTest.AutoMapper
             dto.Should().HaveCount(models.Count());
             foreach(var model in models)
             {
-                var dt = dto.FirstOrDefault(p => p.TariffName == model.Name && p.AnnualCost == model.AnualCost);
+                var dt = dto.FirstOrDefault(p => p.TariffName == model.Name && p.AnnualCost == model.AnnualCost);
                 dt.Should().NotBeNull();
             }
         }

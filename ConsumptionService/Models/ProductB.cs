@@ -20,5 +20,15 @@
         /// Get; Set; The coefficient to calculate the cost for the value exceed base.
         /// </summary>
         public decimal ExtraConsumptionCost { get; set; }
+
+        public override decimal GetAmount(decimal value)
+        {
+            if (value <= AnnualConsumption)
+            {
+                return AnnualCost;
+            }
+
+            return AnnualCost + ((value - AnnualConsumption) * ExtraConsumptionCost);
+        }
     }
 }
