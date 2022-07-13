@@ -24,6 +24,6 @@
         /// <summary>
         /// Get; Set; The annual cost calculated base on <see cref="Name">Product</see>.
         /// </summary>
-        public decimal AnualCost { get; set; }
+        public decimal AnnualCost { get; set; }
     }
 }

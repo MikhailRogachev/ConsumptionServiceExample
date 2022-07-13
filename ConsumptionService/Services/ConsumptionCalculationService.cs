@@ -55,28 +55,13 @@ namespace ConsumptionService.Services
 
             foreach(var product in products)
             {
-                var item = new ConsumptionCostModel
+                consumptions.Add(new ConsumptionCostModel
                 {
                     Description = product.Description,
                     Name = product.Name,
-                    TariffType = product.TariffType
-                };
-
-                switch(product)
-                {
-                    case ProductA productA:
-                        item.AnualCost = productA.GetAnnualCost(value);                        
-                        break;
-
-                    case ProductB productB:
-                        item.AnualCost = productB.GetAnnualCost(value);
-                        break;
-
-                    default:
-                        break;
-                }
-
-                consumptions.Add(item);
+                    TariffType = product.TariffType,
+                    AnnualCost = product.GetAmount(value)
+                });
             }
 
             if (!consumptions.IsAny())
@@ -86,7 +71,7 @@ namespace ConsumptionService.Services
                 return consumptions;
             }
 
-            return consumptions.OrderBy(p => p.AnualCost);
+            return consumptions.OrderBy(p => p.AnnualCost);
         }
     }
 }
