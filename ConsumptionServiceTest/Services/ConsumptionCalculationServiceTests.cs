@@ -17,7 +17,7 @@ namespace ConsumptionServiceTest.Services
         /// <param name="expected">Expected value segregated by product.</param>
         [Theory(DisplayName = "Consumption Service Calculation compare to expected values."),
             MemberData(nameof(GetConsumptions))]
-        public void CunsumptionCalculation_Result(decimal consumption, 
+        public async Task CunsumptionCalculation_Result(decimal consumption, 
             Dictionary<string, decimal> expected)
         {
             // arrange
@@ -26,7 +26,7 @@ namespace ConsumptionServiceTest.Services
                 new Mock<ILogger<ConsumptionCalculationService>>().Object);
 
             // act
-            var result = service.GetAnnualConsumption(consumption);
+            var result = await service.GetAnnualConsumptionAsync(consumption);
 
             // assert
             result.Should().BeAssignableTo<IEnumerable<ConsumptionCostModel>>().And.HaveCount(2);

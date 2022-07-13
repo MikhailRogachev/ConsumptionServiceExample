@@ -10,9 +10,11 @@ namespace ConsumptionServiceTest.Helpers
         private static readonly IRepository repository = new DevDataRepository();
 
         internal static IRepository Repository => repository;
-        internal static T? GetProduct<T>() where T:class
+        internal static async Task<T?> GetProduct<T>() where T:class
         {
-            var product = repository.GetProducts().FirstOrDefault(p => p is T);
+            var response = await repository.GetProductsAsync();
+            var product = response.FirstOrDefault(p => p is T);
+
             return product == null ? null : product as T;
         }
     }

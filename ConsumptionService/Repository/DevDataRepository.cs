@@ -14,13 +14,16 @@ namespace ConsumptionService.Repository
         /// <returns>
         /// <see cref="IEnumerable{Product}">Products Collection</see>.
         /// </returns>
-        public IEnumerable<Product> GetProducts()
+        public async Task<IEnumerable<Product>> GetProductsAsync()
         {
-            return new List<Product>()
+            return await Task.Run(() =>
             {
-                GetProductA(),
-                GetProductB()
-            };
+                return new List<Product>()
+                {
+                    GetProductA(),
+                    GetProductB()
+                };
+            });
         }
 
         private static ProductA GetProductA()

@@ -39,7 +39,7 @@ namespace ConsumptionServiceTest.Controlles
         /// Expecting - 400.
         /// </summary>
         [Fact(DisplayName = "Call Controller with an invalid input value - returns 400.")]
-        public void GetAnnualCost_Result400()
+        public async Task GetAnnualCost_Result400()
         {
             // arrange
             var errorMessage = "Test Message"; 
@@ -53,7 +53,7 @@ namespace ConsumptionServiceTest.Controlles
                 });
 
             // act
-            var response = Sut.GetAnnualCost(-100);
+            var response = await Sut.GetAnnualCost(-100);
 
             // assert
             response.Should().BeAssignableTo<BadRequestObjectResult>();
@@ -65,17 +65,17 @@ namespace ConsumptionServiceTest.Controlles
         /// Expecting - 204.
         /// </summary>
         [Fact(DisplayName = "Call Controller - no products found - returns 204.")]
-        public void GetAnnualCost_Result204()
+        public async Task GetAnnualCost_Result204()
         {
             // arrange
-            _service.Setup(p => p.GetAnnualConsumption(It.IsAny<decimal>()))
-                .Returns(Array.Empty<ConsumptionCostModel>());
+            _service.Setup(p => p.GetAnnualConsumptionAsync(It.IsAny<decimal>()))
+                .ReturnsAsync(Array.Empty<ConsumptionCostModel>());
 
             _validator.Setup(x => x.Validate(It.IsAny<decimal>()))
                 .Returns(new ValidationResult());
 
             // act
-            var response = Sut.GetAnnualCost(100);
+            var response = await Sut.GetAnnualCost(100);
 
             // assert
             response.Should().BeAssignableTo<NoContentResult>();
@@ -88,16 +88,16 @@ namespace ConsumptionServiceTest.Controlles
         /// <param name="model">Fake models is returned by calculation service.</param>
         [Theory(DisplayName = "Call Controller - returns 200.")]
         [AutoData]
-        public void GetAnnualCost_Result200(IEnumerable<ConsumptionCostModel> model)
+        public async Task GetAnnualCost_Result200(IEnumerable<ConsumptionCostModel> model)
         {
             // arrange
-            _service.Setup(p => p.GetAnnualConsumption(It.IsAny<decimal>()))
-               .Returns(model);
+            _service.Setup(p => p.GetAnnualConsumptionAsync(It.IsAny<decimal>()))
+               .ReturnsAsync(model);
 
             _validator.Setup(x => x.Validate(It.IsAny<decimal>()))
                 .Returns(new ValidationResult());
 
-            var response = Sut.GetAnnualCost(100);
+            var response = await Sut.GetAnnualCost(100);
 
             // assert
             response.Should().BeAssignableTo<OkObjectResult>();

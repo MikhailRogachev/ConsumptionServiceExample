@@ -10,13 +10,13 @@ namespace ConsumptionServiceTest.Repository
         /// This test checks the products collection returned by development repository.
         /// </summary>
         [Fact(DisplayName = "Expecting two-items collection returned by the repository.")]
-        public void GetProduct_ReturnCollection()
+        public async Task GetProduct_ReturnCollection()
         {
             // arrange
             var repository = new DevDataRepository();
 
             // act
-            var result = repository.GetProducts();
+            var result = await repository.GetProductsAsync();
 
             // assert
             result.Should().HaveCount(2);
